@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://0p23nld3ckrq"]
+
+[ext_resource type="Script" uid="uid://cqb1qwe4701bx" path="res://player/player_platformer/plat_player.gd" id="1_agirr"]
+[ext_resource type="Texture2D" uid="uid://dvmv2wykuhs3r" path="res://assets/player/rpg_/walk_sideways.png" id="1_ln2jt"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_agirr"]
+radius = 4.0
+height = 22.0
+
+[node name="plat_player" type="CharacterBody2D" unique_id=332904702]
+script = ExtResource("1_agirr")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1079547873]
+texture = ExtResource("1_ln2jt")
+region_enabled = true
+region_rect = Rect2(0, 8, 16, 24)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1330640464]
+position = Vector2(0, 1)
+shape = SubResource("CapsuleShape2D_agirr")

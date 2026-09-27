@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://c5v8l07kd42k2"]
+
+[ext_resource type="Script" uid="uid://din01jphub3j5" path="res://globals/singletons/Transition.gd" id="1_2gi1b"]
+
+[sub_resource type="Animation" id="Animation_2gi1b"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_1yi3g"]
+resource_name = "from_black"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_pj2mc"]
+resource_name = "to_black"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2gi1b"]
+_data = {
+&"RESET": SubResource("Animation_2gi1b"),
+&"from_black": SubResource("Animation_1yi3g"),
+&"to_black": SubResource("Animation_pj2mc")
+}
+
+[node name="transiton" type="CanvasLayer" unique_id=95870513]
+script = ExtResource("1_2gi1b")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=19661829]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.011976958, 0.0438687, 0.12852937, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=162860138]
+libraries/ = SubResource("AnimationLibrary_2gi1b")
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

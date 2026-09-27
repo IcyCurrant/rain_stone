@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://d2tqy8bu234d6"]
+
+[ext_resource type="PackedScene" uid="uid://bnj1kysd2k52r" path="res://misc_/components/interactable_hitbox_component.tscn" id="1_0ikh5"]
+[ext_resource type="Script" uid="uid://c6yswupvlh8fe" path="res://NPCs/npc.gd" id="1_vxakg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uamu8"]
+radius = 16.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3xd07"]
+
+[node name="NPC" type="StaticBody2D" unique_id=1519406148]
+modulate = Color(0, 0, 0, 1)
+self_modulate = Color(0, 0, 0, 1)
+script = ExtResource("1_vxakg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1125639050]
+position = Vector2(0, 8)
+shape = SubResource("CircleShape2D_uamu8")
+
+[node name="InteractableHitboxComponent" parent="." unique_id=639523770 instance=ExtResource("1_0ikh5")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableHitboxComponent" unique_id=1946394195]
+position = Vector2(0, 8)
+shape = SubResource("CircleShape2D_3xd07")

@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://bxwf3qwira7yv"]
+
+[ext_resource type="Script" uid="uid://d12rm8mxanrvv" path="res://misc_/components/puzzle_statues.gd" id="1_a3pvg"]
+[ext_resource type="Texture2D" uid="uid://csnmrxxlm1idc" path="res://assets/world/rpg/foliage/rock_pilgrim16.png" id="1_bajsm"]
+[ext_resource type="PackedScene" uid="uid://bnj1kysd2k52r" path="res://misc_/components/interactable_hitbox_component.tscn" id="3_oeyiu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oeyiu"]
+radius = 5.968275
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oeyiu"]
+radius = 9.329426
+height = 25.415382
+
+[node name="rock_pilgrim" type="StaticBody2D" unique_id=458866691]
+script = ExtResource("1_a3pvg")
+
+[node name="sprite" type="Sprite2D" parent="." unique_id=266381055]
+texture = ExtResource("1_bajsm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=279008523]
+position = Vector2(0, 6.1081753)
+shape = SubResource("CircleShape2D_oeyiu")
+
+[node name="InteractableHitboxComponent" parent="." unique_id=639523770 instance=ExtResource("3_oeyiu")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableHitboxComponent" unique_id=1206430926]
+position = Vector2(0, 6.1081753)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_oeyiu")
