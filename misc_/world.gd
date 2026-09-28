@@ -7,7 +7,6 @@ extends  Node2D
 ]
 
 @onready var puzzle_statue = preload("res://misc_/components/puzzle_statues.tscn")
-@onready var npcs = preload("res://NPCs/npc.tscn")
 
 #stores current elevation scene
 var elevation

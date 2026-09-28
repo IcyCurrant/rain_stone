@@ -59,4 +59,3 @@ func handle_anim():
 				tex.flip_h = true
 		_:
 			print("how'd you even get this q_q")
-		

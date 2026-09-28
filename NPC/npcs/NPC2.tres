@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="NPC" format=3 uid="uid://cn6blrt44ssk7"]
+
+[ext_resource type="Script" uid="uid://cnbo5arfhr4nx" path="res://NPC/npcs/NPC.gd" id="1_ph1my"]
+[ext_resource type="Texture2D" uid="uid://cpxwx3kqaot1t" path="res://assets/world/rpg/foliage/leaf.png" id="2_rw7vd"]
+
+[resource]
+script = ExtResource("1_ph1my")
+name = "NPC2"
+texture = ExtResource("2_rw7vd")
+metadata/_custom_type_script = "uid://cnbo5arfhr4nx"
