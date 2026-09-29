@@ -5,7 +5,13 @@ extends  Node2D
 	preload("res://worlds/elevation_1.tscn"),
 	preload("res://worlds/elevation_2.tscn")
 ]
-
+# all npc (there aren't that many so its fine
+@onready var npc_types : Array[NPC] = [
+	preload("res://NPC/npcs/NPC1.tres"),
+	preload("res://NPC/npcs/NPC2.tres")
+]
+@onready var npc_world = preload("res://NPC/npc_world.tscn")
+#for puzzle statues
 @onready var puzzle_statue = preload("res://misc_/components/puzzle_statues.tscn")
 
 #stores current elevation scene
@@ -16,7 +22,10 @@ var elevation_num : int = 1
 var base_elevation
 var cam_bounds
 
-func _ready() -> void:
+func _ready() -> void: 
+	print(
+		(str_to_var("Vector2" + "1(10,5)".substr(1)) as Vector2) * 0.5
+		)
 	# load the first elevation when the game is loaded
 	call_deferred("change_elevation_to", elevation_num)
 	
@@ -58,6 +67,26 @@ func change_elevation_to(id: int):
 		statue.position = base_elevation.map_to_local(i)
 		self.add_child.call_deferred(statue)
 	print(positions)
+	
+	
+	# place npcs <!>
+	var _npc
+	for i in range(len(npc_types)):
+		if len(base_elevation.get_used_cells_by_id(0, Vector2i(i,0))) == 0: continue
+		
+		_npc = npc_world.instantiate()
+		
+		_npc.position = base_elevation.map_to_local(
+			base_elevation.get_used_cells_by_id(0, Vector2i(i,0))[0]
+		)
+		_npc.npc_data = npc_types[i]
+		
+		self.add_child.call_deferred(_npc)
+		#====================================#
+		# tilemap consists of a row of tiles which are meant to indicate positons of npcs
+		# all of them are to be made in a single row
+		# this iterates over the row and checks if the tile is present or not
+		#====================================#
 		
 	SignalBus.set_camera_bounds.emit(cam_bounds)
 	

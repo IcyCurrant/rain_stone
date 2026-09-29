@@ -14,7 +14,6 @@ func interact():
 		
 		picked_up = false
 		PlayerDat.carrying = false
-	
 	if !hitbox.is_overlapping:
 		return
 	if PlayerDat.carrying:

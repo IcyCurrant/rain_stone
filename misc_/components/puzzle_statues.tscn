@@ -12,6 +12,8 @@ radius = 9.329426
 height = 25.415382
 
 [node name="rock_pilgrim" type="StaticBody2D" unique_id=458866691]
+z_index = 1
+y_sort_enabled = true
 script = ExtResource("1_a3pvg")
 
 [node name="sprite" type="Sprite2D" parent="." unique_id=266381055]
